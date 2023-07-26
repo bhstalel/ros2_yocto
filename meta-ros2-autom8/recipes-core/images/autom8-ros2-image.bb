@@ -7,9 +7,6 @@ IMAGE_INSTALL_append="bash vim bash"
 EXTRA_IMAGE_FEATURES += "ros-implicit-workspace"
 
 inherit extrausers
-EXTRA_USERS_PARAMS = " useradd customUser1; \
-                       useradd customUser2; \
-                       usermod  -p 'Password_1' customUser1; \
-                       usermod  -p 'Password_2' customUser2; \
-                       usermod  -a -G sudo customUser1; \
-                       usermod  -a -G sudo customUser2;"
+EXTRA_USERS_PARAMS = " useradd autom8_dev1; \
+                       usermod  -p 'Password_1' autom8_dev1; \
+                       usermod  -a -G sudo autom8_dev1; "
