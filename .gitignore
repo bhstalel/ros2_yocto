@@ -1,0 +1,12 @@
+bitbake*
+build
+cache
+downloads
+meta-openembedded
+meta-raspberrypi
+meta-ros
+openembedded-core
+ros2
+sstate-cache
+tmp
+workspace

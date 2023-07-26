@@ -1,0 +1,25 @@
+From 9e8604e2b062d121d69eb515f82d360fdca90f26 Mon Sep 17 00:00:00 2001
+From: "Aymen.rachdi" <acsdogs69@gmail.com>
+Date: Wed, 26 Jul 2023 09:25:45 +0100
+Subject: [PATCH] fix pthread on ubuntu for ros2
+
+---
+ boost/thread/pthread/thread_data.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/boost/thread/pthread/thread_data.hpp b/boost/thread/pthread/thread_data.hpp
+index aefbeb43c..bc9b1367a 100644
+--- a/boost/thread/pthread/thread_data.hpp
++++ b/boost/thread/pthread/thread_data.hpp
+@@ -57,7 +57,7 @@ namespace boost
+ #else
+           std::size_t page_size = ::sysconf( _SC_PAGESIZE);
+ #endif
+-#if PTHREAD_STACK_MIN > 0
++#ifdef PTHREAD_STACK_MIN
+           if (size<PTHREAD_STACK_MIN) size=PTHREAD_STACK_MIN;
+ #endif
+           size = ((size+page_size-1)/page_size)*page_size;
+-- 
+2.34.1
+
