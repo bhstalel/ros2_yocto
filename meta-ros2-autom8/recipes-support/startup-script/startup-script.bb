@@ -1,14 +1,16 @@
-DESCRIPTON = "Startup script to launch commands at startup"
+DESCRIPTON = "A test systemd service"
 LICENSE = "CLOSED"
 
 RDEPENDS_${PN} += "bash"
-SRC_URI = " file://startup-script-001 "
+inherit systemd
 
-do_install() {
-    install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${WORKDIR}/startup-script-001  ${D}${sysconfdir}/init.d/
-    install -d ${D}${sysconfdir}/rcS.d
-    install -d ${D}${sbindir}
-    ln -sf ../init.d/startup-script-001  ${D}${sysconfdir}/rcS.d/S90startup-script-001
-    
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE_${PN} = "startup-script-001.service"
+
+SRC_URI_append = " file://startup-script-001.service "
+FILES_${PN} += "${systemd_unitdir}/system/startup-script-001.service"
+
+do_install_append() {
+  install -d ${D}/${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/startup-script-001.service ${D}/${systemd_unitdir}/system
 }

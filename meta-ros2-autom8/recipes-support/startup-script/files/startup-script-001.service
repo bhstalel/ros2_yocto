@@ -1,0 +1,8 @@
+[Unit]
+Description=A test systemd service
+
+[Service]
+ExecStart=/bin/echo "Hello"
+
+[Install]
+WantedBy=multi-user.target
