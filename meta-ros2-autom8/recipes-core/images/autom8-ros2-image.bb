@@ -3,7 +3,8 @@ LICENSE = "MIT"
 
 #include "meta-ros-common/recipes-core/images/ros-image-core.bb"
 include  recipes-core/images/ros-image-core.bb
-IMAGE_INSTALL_append="bash vim bash startup-script" 
+
+IMAGE_INSTALL_append=" bash bash-completion vim startup-script kbd-layout" 
 EXTRA_IMAGE_FEATURES += "ros-implicit-workspace"
 
 inherit extrausers
